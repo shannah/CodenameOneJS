@@ -2,8 +2,8 @@
     <!--build_version=1.3-->
     
     
-<project name="CodenameOneJS" default="default" basedir=".">
-    <description>Builds, tests, and runs the project CodenameOneJS.</description>
+<project name="CN1JSLib" default="default" basedir=".">
+    <description>Builds, tests, and runs the project CN1JSLib.</description>
     <import file="nbproject/build-impl.xml"/>
     <property file="codenameone_settings.properties"/>
 
