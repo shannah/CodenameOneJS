@@ -4,9 +4,9 @@
  */
 package ca.weblite.codename1.js;
 
-import com.codename1.io.Log;
+
 import com.codename1.util.StringUtil;
-import java.util.Vector;
+
 
 /**
  * A Java Wrapper around a Javascript object. In Javascript there are only a few
@@ -182,7 +182,7 @@ public class JSObject {
      * The ID of this object.  This is the ID within the Javascript lookup table
      * that stores a reference to the actual Javascript object.
      */
-    private int objectId = 0;
+    int objectId = 0;
     
     /**
      * Javascript register variable 1.
@@ -203,6 +203,7 @@ public class JSObject {
      * this ID within the object.
      */
     static final String ID_KEY = "ca_weblite_codename1_js_JSObject_ID";
+    static final String PROP_REFCOUNT = "ca_weblite_codename1_js_JSObject_REFCOUNT";
     
     /**
      * Constructor for a JSObject.
@@ -239,11 +240,15 @@ public class JSObject {
             String js = "var id = "+R1+"."+ID_KEY+"; "+
                         "if (typeof(id)=='undefined' || typeof("+lt+"[id]) == 'undefined' || "+lt+"[id]."+ID_KEY+"!=id){"+
                             lt+".push("+R1+"); id="+lt+".indexOf("+R1+"); Object.defineProperty("+R1+",\""+ID_KEY+"\",{value:id, enumerable:false});"+
+                            "Object.defineProperty("+R1+",\""+PROP_REFCOUNT+"\",{value:1, enumerable:false});"+
+                        "} else { "+
+                            R1+"."+PROP_REFCOUNT+"++;"+
                         "} id";
             
            
             String id = exec(js);
             this.objectId = Integer.parseInt(id);
+            context.retain(this);
             
         }
     }
