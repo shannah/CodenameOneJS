@@ -2,7 +2,7 @@
 
 A Java/Javascript bridge for Codename One
 
-Note:  This library has now been amalgamated into the Codename One core as the package com.codename1.javascript.  You are encouraged to use that package now instead of this library.
+Note:  This library has now been amalgamated into the [Codename](http://www.codenameone.com) One core as the package com.codename1.javascript.  You are encouraged to use that package now instead of this library.
 
 ##Synopsis
 
