@@ -15,7 +15,7 @@
  *         <h2>Installation</h2>
  *         
  *         <p>To use the Codename One JS Bridge, you simply need to include the 
- *             <a href="https://codenameone-incubator.googlecode.com/svn/trunk/shannah/CN1JSLib/trunk/dist/CN1JSLib.cn1lib">CN1JSLib library</a> in your Codename One project.</p>
+ *             <a href="https://github.com/shannah/CodenameOneJS/blob/master/dist/CN1JSLib.cn1lib?raw=true">CN1JSLib library</a> in your Codename One project.</p>
  *         <p>For information about including Codename One libraries in your application, see <a href="http://www.codenameone.com/3/post/2013/02/new-preliminary-library-support.html">http://www.codenameone.com/3/post/2013/02/new-preliminary-library-support.html</a>.</p>
  *         
  *         <h2>Usage</h2>

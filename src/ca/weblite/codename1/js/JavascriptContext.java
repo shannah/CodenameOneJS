@@ -12,7 +12,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.events.BrowserNavigationCallback;
 import com.codename1.util.StringUtil;
-import java.lang.ref.WeakReference;
+
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -122,7 +122,7 @@ public class JavascriptContext  {
     /**
      * A map of JSObjects that is used for cleanup when they are no longer needed.
      */
-    private  Map<Integer,WeakReference> objectMap = new HashMap<Integer,WeakReference>();
+    private  Map<Integer,Object> objectMap = new HashMap<Integer,Object>();
     
     /**
      * Whenever the objectMap exceeds this size, cleanup will be called whenever retain()
@@ -169,7 +169,7 @@ public class JavascriptContext  {
      * @param obj 
      */
     void retain(JSObject obj){
-        objectMap.put(obj.objectId, new WeakReference(obj));
+        objectMap.put(obj.objectId, Display.getInstance().createSoftWeakRef(obj));
         if ( objectMap.size() > objectMapThresholdSize || cleanupRandomizer.nextDouble() < cleanupProbability ){
             cleanup();
         }
@@ -209,8 +209,8 @@ public class JavascriptContext  {
             Log.p("Cleaning up Javascript lookup table.");
         }
         List<Integer> remove = new ArrayList<Integer>();
-        for ( Map.Entry<Integer,WeakReference> e : objectMap.entrySet()){
-            if ( e.getValue().get() == null ){
+        for ( Map.Entry<Integer,Object> e : objectMap.entrySet()){
+            if ( Display.getInstance().extractHardRef(e.getValue()) == null ){
                 remove.add(e.getKey());
             }
         }

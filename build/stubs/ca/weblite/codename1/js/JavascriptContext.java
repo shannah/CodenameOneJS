@@ -15,7 +15,7 @@
  *         <h2>Installation</h2>
  *         
  *         <p>To use the Codename One JS Bridge, you simply need to include the 
- *             <a href="https://codenameone-incubator.googlecode.com/svn/trunk/shannah/CN1JSLib/trunk/dist/CN1JSLib.cn1lib">CN1JSLib library</a> in your Codename One project.</p>
+ *             <a href="https://github.com/shannah/CodenameOneJS/blob/master/dist/CN1JSLib.cn1lib?raw=true">CN1JSLib library</a> in your Codename One project.</p>
  *         <p>For information about including Codename One libraries in your application, see <a href="http://www.codenameone.com/3/post/2013/02/new-preliminary-library-support.html">http://www.codenameone.com/3/post/2013/02/new-preliminary-library-support.html</a>.</p>
  *         
  *         <h2>Usage</h2>
@@ -642,6 +642,15 @@ public class JavascriptContext {
 	 *  @param c The BrowserComponent on which the context runs.
 	 */
 	public final void setBrowserComponent(com.codename1.ui.BrowserComponent c) {
+	}
+
+	/**
+	 *  Cleans up stale references to Javascript objects.  This is triggered randomly whenever 
+	 *  a JSObject is constructed (with a given probability threshold).  If this is never called
+	 *  then the JS GC won't be able to free any objects that have ever been wrapped by JSObject
+	 *  because they are stored in the global lookup table.
+	 */
+	public void cleanup() {
 	}
 
 	/**
